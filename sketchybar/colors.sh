@@ -1,0 +1,12 @@
+#!/bin/bash
+BG1=0xff252321
+BG2=0xff3d484d
+TEXT1=0xffd3c6aa
+TEXT2=0xff9da9a0
+TEXT3=0xff859289
+TEXT4=0xff7a8478
+LAVENDER=0xffa7c080
+BLUE=0xff7fbbb3
+RED=0xffe67e80
+YELLOW=0xffdbbc7f
+MAUVE=0xffd699b6

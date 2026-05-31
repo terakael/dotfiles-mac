@@ -1,0 +1,15 @@
+themes {
+    forest {
+        fg 211 198 170
+        bg 37 35 33
+        black 48 49 46
+        red 207 106 109
+        green 150 173 115
+        yellow 198 171 115
+        blue 94 96 94
+        magenta 193 138 165
+        cyan 118 173 132
+        white 191 180 157
+        orange 198 171 115
+    }
+}

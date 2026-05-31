@@ -1,0 +1,28 @@
+window-decoration = false
+font-family = "Agave Nerd Font"
+background = 252321
+foreground = d3c6aa
+font-size = 20
+adjust-cell-height = 15%
+keybind = super+digit_1=unbind
+keybind = super+digit_2=unbind
+keybind = super+digit_3=unbind
+keybind = super+digit_4=unbind
+keybind = super+digit_5=unbind
+keybind = super+digit_6=unbind
+keybind = super+digit_7=unbind
+keybind = super+digit_8=unbind
+keybind = super+digit_9=unbind
+
+keybind = super+1=text:\x1b1
+keybind = super+2=text:\x1b2
+keybind = super+3=text:\x1b3
+keybind = super+4=text:\x1b4
+keybind = super+5=text:\x1b5
+keybind = super+6=text:\x1b6
+keybind = super+7=text:\x1b7
+keybind = super+8=text:\x1b8
+keybind = super+9=text:\x1b9
+
+keybind = super+j=text:\x1bj
+keybind = super+k=text:\x1bk

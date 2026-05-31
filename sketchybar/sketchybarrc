@@ -1,0 +1,74 @@
+#!/bin/bash
+source "$HOME/.config/sketchybar/colors.sh"
+
+sketchybar --bar \
+  height=32 \
+  position=top \
+  sticky=on \
+  topmost=on \
+  padding_left=4 \
+  padding_right=4 \
+  color=$BG1
+
+sketchybar --default \
+  icon.font="Agave Nerd Font:Regular:14.0" \
+  label.font="Agave Nerd Font:Regular:14.0" \
+  icon.color=$TEXT1 \
+  label.color=$TEXT1 \
+  padding_left=6 \
+  padding_right=6 \
+  label.padding_left=2 \
+  label.padding_right=2
+
+# === LEFT: Aerospace workspaces ===
+sketchybar --add event aerospace_focus_change
+
+for sid in 1 2 3 4 5 6 7 8 9 0; do
+  sketchybar --add item space.$sid left \
+    --subscribe space.$sid aerospace_focus_change \
+    --set space.$sid \
+      background.color=$TEXT1 \
+      background.corner_radius=3 \
+      background.height=18 \
+      label.padding_left=5 \
+      label.padding_right=5 \
+      background.drawing=off \
+      label="$sid" \
+      label.font="Agave Nerd Font:Bold:13.0" \
+      label.color=$TEXT3 \
+      padding_left=3 \
+      padding_right=3 \
+      click_script="aerospace workspace $sid" \
+      script="$HOME/.config/sketchybar/plugins/aerospace.sh $sid"
+done
+
+# === CENTER: Clock ===
+sketchybar --add item clock center \
+  --set clock \
+    update_freq=10 \
+    icon.drawing=off \
+    script="$HOME/.config/sketchybar/plugins/clock.sh"
+
+# === RIGHT ===
+sketchybar --add item battery right \
+  --set battery \
+    update_freq=30 \
+    icon.color=$TEXT1 \
+    script="$HOME/.config/sketchybar/plugins/battery.sh"
+
+sketchybar --add item volume right \
+  --set volume \
+    update_freq=5 \
+    icon.color=$LAVENDER \
+    script="$HOME/.config/sketchybar/plugins/volume.sh"
+
+sketchybar --add item bluetooth right \
+  --set bluetooth \
+    update_freq=10 \
+    icon.color=$LAVENDER \
+    script="$HOME/.config/sketchybar/plugins/bluetooth.sh"
+
+# Work-specific widgets (Teams, DAG, Calendar) — loaded only on work machines
+[ -f "$HOME/.config/sketchybar/sketchybarrc.work" ] && source "$HOME/.config/sketchybar/sketchybarrc.work"
+
+sketchybar --update

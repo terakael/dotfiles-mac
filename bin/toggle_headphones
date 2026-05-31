@@ -1,0 +1,9 @@
+#!/bin/bash
+
+MAC="f4-d4-88-da-bd-ce"
+
+if blueutil --is-connected $MAC | grep -q "1"; then
+  blueutil --disconnect $MAC
+else
+  blueutil --connect $MAC
+fi

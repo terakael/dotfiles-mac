@@ -409,9 +409,21 @@ bind-key -T text-object W \
     send-keys -X previous-space \; \
     send-keys -X begin-selection \; \
     send-keys -X next-space-end
+bind-key -T text-object p \
+    send-keys -X previous-paragraph \; \
+    send-keys -X begin-selection \; \
+    send-keys -X next-paragraph \; \
+    send-keys -X cursor-up \; \
+    send-keys -X end-of-line
 bind-key -T text-object Escape switch-client -T copy-mode-vi
 
 bind-key -T copy-mode-vi E send-keys -X next-space-end
+
+# If there is a selection, clear it (stay in copy mode).
+# If there is NO selection, exit copy mode entirely.
+bind-key -T copy-mode-vi Escape if-shell -F "#{selection_present}" \
+    "send-keys -X clear-selection" \
+    "send-keys -X cancel"
 
 # If there is a selection, copy and cancel.
 # If there is NO selection, switch to the 'yank-operator' key table.
@@ -472,6 +484,22 @@ bind-key -T yank-around W \
     send-keys -X previous-space \; \
     send-keys -X begin-selection \; \
     send-keys -X next-space-end \; \
+    send-keys -X copy-selection-and-cancel
+
+# yip: Yank inside paragraph (excludes surrounding blank lines)
+bind-key -T yank-inside p \
+    send-keys -X previous-paragraph \; \
+    send-keys -X begin-selection \; \
+    send-keys -X next-paragraph \; \
+    send-keys -X cursor-up \; \
+    send-keys -X end-of-line \; \
+    send-keys -X copy-selection-and-cancel
+
+# yap: Yank around paragraph (includes trailing blank line)
+bind-key -T yank-around p \
+    send-keys -X previous-paragraph \; \
+    send-keys -X begin-selection \; \
+    send-keys -X next-paragraph \; \
     send-keys -X copy-selection-and-cancel
 
 # pressing Escape cancels the yank operator

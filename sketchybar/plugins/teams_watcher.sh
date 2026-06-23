@@ -1,0 +1,1 @@
+/Users/daniel.knezevic/dotfiles/work/sketchybar/plugins/teams_watcher.sh
